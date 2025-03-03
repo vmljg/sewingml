@@ -1,34 +1,48 @@
-import './globals.css';
-import type { Metadata, Viewport } from 'next';
-import { Manrope } from 'next/font/google';
-import { UserProvider } from '@/lib/auth';
-import { getUser } from '@/lib/db/queries';
+import "./globals.css";
+import type { Viewport } from "next";
+import { splineSans } from "@/assets/fonts";
+import { UserProvider } from "@/lib/auth";
+import { getUser } from "@/lib/db/queries";
+import TopNavigation from "@/components/top-navigation-with-mobile";
+import AppNavigation from "@/components/app-navigation";
+import MegaFooter from "@/components/mega-footer";
 
-export const metadata: Metadata = {
-  title: 'Next.js SaaS Starter',
-  description: 'Get started quickly with Next.js, Postgres, and Stripe.',
-};
+export { main as metadata } from "@/data/metadata";
 
 export const viewport: Viewport = {
   maximumScale: 1,
 };
 
-const manrope = Manrope({ subsets: ['latin'] });
-
 export default function RootLayout({
   children,
+  sidebar,
 }: {
   children: React.ReactNode;
+  sidebar: React.ReactNode;
 }) {
   let userPromise = getUser();
 
   return (
     <html
       lang="en"
-      className={`bg-white dark:bg-gray-950 text-black dark:text-white ${manrope.className}`}
+      className={`bg-white text-black dark:bg-gray-950 dark:text-white ${splineSans.className}`}
     >
-      <body className="min-h-[100dvh] bg-gray-50">
-        <UserProvider userPromise={userPromise}>{children}</UserProvider>
+      <body className="flex min-h-screen flex-col">
+        <UserProvider userPromise={userPromise}>
+          <TopNavigation />
+          <div className="grid flex-grow md:grid-cols-[var(--spacing-gutter)_1fr_auto]">
+            <AppNavigation />
+            <main className="pt-gutter flex flex-col items-center">
+              {children}
+            </main>
+            <aside className="pt-gutter bg-background hidden flex-col items-center border-l-4 md:flex">
+              {sidebar}
+            </aside>
+          </div>
+          <footer className="border-t-4">
+            <MegaFooter />
+          </footer>
+        </UserProvider>
       </body>
     </html>
   );

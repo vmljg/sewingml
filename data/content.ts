@@ -1,0 +1,1 @@
+export const HOME_LEAD = 'Quilt Smarter, Not Harder: AI-Powered Quilting Solutions';
