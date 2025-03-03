@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+@layer components {
+  .cell {
+    @apply aspect-square cursor-pointer;
+  }
+  .subdivided-cell {
+    @apply grid grid-cols-2 grid-rows-2 gap-1 bg-gray-300;
+  }
+  .sub-cell {
+    @apply aspect-square cursor-pointer;
+  }
+  .diagonal-subdivided-cell {
+    @apply relative h-full w-full;
+  }
+  .diagonal-sub-cell {
+    @apply absolute h-full w-full cursor-pointer;
+    clip-path: polygon(0 0, 100% 0, 100% 100%);
+  }
+  .diagonal-sub-cell.left {
+    clip-path: polygon(0 0, 100% 0, 0 100%);
+  }
+  .diagonal-sub-cell.right {
+    clip-path: polygon(100% 0, 100% 100%, 0 100%);
+  }
+  .diagonal-quadrant-subdivided-cell {
+    @apply relative h-full w-full;
+  }
+  .diagonal-quadrant-sub-cell {
+    @apply absolute h-1/2 w-1/2 cursor-pointer;
+  }
+  .diagonal-quadrant-sub-cell.top-left {
+    @apply top-0 left-0;
+    clip-path: polygon(0 0, 100% 0, 0 100%);
+  }
+  .diagonal-quadrant-sub-cell.top-right {
+    @apply top-0 right-0;
+    clip-path: polygon(100% 0, 100% 100%, 0 0);
+  }
+  .diagonal-quadrant-sub-cell.bottom-left {
+    @apply bottom-0 left-0;
+    clip-path: polygon(0 0, 100% 100%, 0 100%);
+  }
+  .diagonal-quadrant-sub-cell.bottom-right {
+    @apply right-0 bottom-0;
+    clip-path: polygon(100% 0, 100% 100%, 0 100%);
+  }
+  .triangle-subdivided-cell {
+    @apply relative h-full w-full;
+  }
+  .triangle-sub-cell {
+    @apply absolute h-full w-full cursor-pointer;
+  }
+  .triangle-sub-cell.top {
+    clip-path: polygon(0 0, 100% 0, 50% 50%);
+  }
+  .triangle-sub-cell.right {
+    clip-path: polygon(100% 0, 100% 100%, 50% 50%);
+  }
+  .triangle-sub-cell.bottom {
+    clip-path: polygon(0 100%, 100% 100%, 50% 50%);
+  }
+  .triangle-sub-cell.left {
+    clip-path: polygon(0 0, 0 100%, 50% 50%);
+  }
+}

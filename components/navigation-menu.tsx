@@ -79,6 +79,7 @@ export function NavigationMenu({ items }: NavigationMenuProps) {
           item.subMenu &&
           hoveredIndex === index && (
             <div
+              key={index}
               className={cn(
                 "border-on-background mt-8 mb-auto border-t-2 transition-opacity duration-200 ease-out starting:opacity-0",
                 isMenuOpen ? "opacity-100" : "pointer-events-none opacity-0"
