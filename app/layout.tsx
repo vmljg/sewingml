@@ -20,7 +20,7 @@ export default function RootLayout({
   children: React.ReactNode;
   sidebar: React.ReactNode;
 }) {
-  let userPromise = getUser();
+  const userPromise = getUser();
 
   return (
     <html

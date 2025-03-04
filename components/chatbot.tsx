@@ -16,7 +16,6 @@ export default function Chatbot() {
     stop,
     reload,
     error,
-    data,
   } = useChat({
     streamProtocol: "text",
   });
