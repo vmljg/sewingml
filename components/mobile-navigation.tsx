@@ -6,6 +6,7 @@ import { Menu, X, ChevronDown, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
+import Image from "next/image";
 
 interface SubMenuItem {
   title: string
@@ -53,7 +54,7 @@ export function MobileNavigation({ items, brand, cta }: MobileNavigationProps) {
           <div className="flex flex-col h-full">
             <div className="flex items-center justify-between py-4">
               {brand.logo ? (
-                <img src={brand.logo || "/placeholder.svg"} alt={brand.name} className="h-8" />
+                <Image src={brand.logo || "/placeholder.svg"} alt={brand.name} className="h-8" />
               ) : (
                 <span className="text-lg font-bold">{brand.name}</span>
               )}
